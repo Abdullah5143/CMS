@@ -11,7 +11,6 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
         $permissions=Permission::all();
         return view('permission.index',compact('permissions'));
     }
@@ -21,7 +20,6 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
         $permissions = Permission::all();
         return view('permission.create');
     }
@@ -31,7 +29,6 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'name' => 'required',
         ]);
@@ -46,7 +43,6 @@ class PermissionController extends Controller
      */
     public function show(string $id)
     {
-        //
         $permission=Permission::find($id);
         return view('permission.show',compact('permission'));
     }
@@ -56,7 +52,6 @@ class PermissionController extends Controller
      */
     public function edit(string $id)
     {
-        //
         $permission=Permission::find($id);
         return view('permission.edit',compact('permission'));
     }
@@ -66,7 +61,6 @@ class PermissionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
         $request->validate([
             'name' => 'required',
         ]);
@@ -81,7 +75,6 @@ class PermissionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
         $permission= Permission::find($id);
         $permission->delete();
         return redirect()->back()->with('msg','Success');

@@ -41,8 +41,8 @@
                 </span><br>
                 <label for="">Company</label>
                 <select name="company" id="company" class="form-control mt-2 mb-1 @error('company') is-invalid @enderror">
-                <option value="{{ $emp->company->id }}">
-                    {{ $emp->company->name }}
+                <option value="@if (isset( $emp->company->id )) @endif">
+                    @if (isset( $emp->company->name )) @endif
                 </option>
                 @foreach ($company as $item)
                     <option value="{{ $item->id }}">

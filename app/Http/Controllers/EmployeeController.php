@@ -26,14 +26,14 @@ class EmployeeController extends Controller
     public function create()
     {
         //
-        if(Auth::User()->hasPermissionTo('add-employee')){
+        // if(Auth::User()->hasPermissionTo('add-employee')){
         $roles=Role::all();
         $company=Company::all();
         return view('employee.create',compact('company','roles'));
-        }
-        else{
-            return redirect()->back()->with('msg','Only Admin have Access to add an employee');
-        }
+        // }
+        // else{
+        //     return redirect()->back()->with('msg','Only Admin have Access to add an employee');
+        // }
     }
 
     /**
@@ -113,13 +113,13 @@ class EmployeeController extends Controller
     public function destroy(string $id)
     {
         //
-        if(Auth::User()->hasRole('admin')){
+        // if(Auth::User()->hasRole('admin')){
             $emp= Employee::find($id);
             $emp->delete();
             return redirect()->back()->with('msg','Success');
-        }
-        else{
-            return redirect()->back()->with('msg','You are not Admin');
-        }
+        // }
+        // else{
+        //     return redirect()->back()->with('msg','You are not Admin');
+        // }
     }
 }

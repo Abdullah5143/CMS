@@ -21,15 +21,15 @@
                 {{ session()->get('msg') }}
             </div>
             @endif
-        <div class="container mt-5">
+        {{-- <div class="container mt-5">
             <a href='{{ route('permission.create') }}' class="btn btn-primary">Add Permission</a>
-        </div>
+        </div> --}}
         <div class="container mt-5">
             <table id="myTable">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th class="datatable-nosort">Action</th>
+                        {{-- <th class="datatable-nosort">Action</th> --}}
                     </tr>
 
                 </thead>
@@ -38,7 +38,7 @@
                         
                     <tr>
                     <td>{{ $permission->name }}</td>
-                    <td>
+                    {{-- <td>
                         <a href="">
                             <form action="{{ route('permission.destroy',[$permission->id]) }}" method="post" >
                                 @csrf
@@ -48,7 +48,7 @@
                         </a>
                             <a href='{{ route('permission.show',[$permission->id]) }}' class="btn btn-link btn-sm">View</a>
                             <a href='{{ route('permission.edit',[$permission->id]) }}' class="btn btn-link btn-sm">Update</a>
-                    </td>
+                    </td> --}}
                     </tr>
                     @endforeach
                 </tbody>

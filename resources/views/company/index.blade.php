@@ -21,9 +21,11 @@
                 {{ session()->get('msg') }}
             </div>
             @endif
+        @if(Auth::User()->hasPermissionTo('add-company'))
         <div class="container mt-5">
             <a href="{{ route('company.create') }}" class="btn btn-primary">Add Company</a>
         </div>
+        @endif
         <div class="container mt-5">
             <table id="myTable">
                 <thead>
@@ -45,6 +47,7 @@
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->website }}</td>
                     <td>
+                        @if(Auth::User()->hasPermissionTo('delete-company'))
                         <a href="">
                             <form action="{{ route('company.destroy',[$item->id]) }}" method="post">
                                 @csrf
@@ -52,8 +55,13 @@
                                 <input type="submit" name="save" value="Delete" class="btn btn-link btn-sm">
                             </form>
                         </a>
+                        @endif
+                        @if(Auth::User()->hasPermissionTo('show-company'))
                             <a href='{{ route('company.show',[$item->id]) }}' class="btn btn-link btn-sm">View</a>
+                        @endif
+                        @if(Auth::User()->hasPermissionTo('update-company'))
                             <a href='{{ route('company.edit',[$item->id]) }}' class="btn btn-link btn-sm">Update</a>
+                        @endif
                     </td>
                     </tr>
                     @endforeach

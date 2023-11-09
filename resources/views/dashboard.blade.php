@@ -4,7 +4,11 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
+    @if(session()->has('msg'))
+            <div class="alert alert-success">
+                {{ session()->get('msg') }}
+            </div>
+            @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">

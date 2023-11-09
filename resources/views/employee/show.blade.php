@@ -30,7 +30,7 @@
             <input readonly type="text" name="lname" placeholder="Enter Last Name" value="{{ $emp->lname }}" class="form-control mt-2 mb-1 "
                 id=""><br>
                 <label for="">Company</label>
-                <input readonly type="text" name="fname" placeholder="Enter First Name" value="{{ $emp->company->name }}" class="form-control mt-2 mb-1"
+                <input readonly type="text" name="fname" placeholder="Company" value="@if (isset($emp->company->name)) @endif" class="form-control mt-2 mb-1"
                 id=""><br>
             <label for="">Email</label>
             <input readonly type="text" name="email" placeholder="Enter Email" value="{{ $emp->email }}"  class="form-control mt-2 mb-1"

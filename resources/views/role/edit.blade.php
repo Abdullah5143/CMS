@@ -38,11 +38,13 @@
                     
                     <br>
                     @if($role->permissions)
+                    <div class="col-10 ">
                         @foreach($role->permissions as $role_permission)
-                            <div class="btn btn-outline-danger ms-2">{{ $role_permission->name }}
-                                <button type="button" class="btn-close btn-close-white btn-sm" onclick="revokePermission({{$role->id}}, {{$role_permission->id}})"></button>
+                            <div class="btn btn-outline-danger ms-2 col-md-3">{{ $role_permission->name }}
+                                <button type="button" class="btn-close btn-close-white btn-sm pb-2" onclick="revokePermission({{$role->id}}, {{$role_permission->id}})"></button>
                             </div>
                         @endforeach
+                    </div>
                     @endif
                 </div>
                 <br>

@@ -21,9 +21,11 @@
                 {{ session()->get('msg') }}
             </div>
             @endif
+        @if(Auth::User()->hasPermissionTo('add-employee'))
         <div class="container mt-5">
             <a href="{{ route('employee.create') }}" class="btn btn-primary">Add Employee</a>
         </div>
+        @endif
         <div class="container mt-5">
             <table id="myTable">
                 <thead>
@@ -41,19 +43,28 @@
                     @foreach($employee as $item)
                     <tr>
                     <td class="table-plus">{{ $item->fname.' '.$item->lname }}</td>
-                    <td>{{ $item->company->name }}</td>
+                    <td>
+                        @if (isset($item->company->name))
+                        {{ $item->company->name }}
+                        @endif
+                    </td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->phone }}</td>
                     <td>
+                        @if(Auth::User()->hasPermissionTo('delete-employee'))
                         <a href="">
                         <form action="{{ route('employee.destroy',[$item->id]) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" name="save" value="Delete" class="btn btn-link btn-sm">
                         </form></a>
+                        @endif
+                        @if(Auth::User()->hasPermissionTo('show-employee'))
                         <a href='{{ route('employee.show',[$item->id]) }}' class="btn btn-link btn-sm">Show</a>
+                        @endif
+                        @if(Auth::User()->hasPermissionTo('update-employee'))
                         <a href='{{ route('employee.edit',[$item->id]) }}' class="btn btn-link btn-sm">Update</a>
-                        
+                        @endif
                     </td>
                     </tr>
                     @endforeach
