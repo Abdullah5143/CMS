@@ -80,13 +80,16 @@
             <input type="submit" name="save" value="Save" class="btn btn-info">
         </form>
         </div>
-        <div id="mouse" class="btn btn-primary" onmouseover="mouse()" >Click me</div>
+        <div id="mouse" class="btn btn-primary" onmouseenter="mouse()" onmouseleave="rem()" >Click me</div>
     </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
     function mouse(){
-        $('#mouse').append('<button class="btn-close" id="cross"></button>')
+        $('#mouse').append('<button id="cross" class="btn-close btn-sm" id="cross"></button>')
+    }
+    function rem(){
+        $('#cross').remove();
     }
     function revokePermission(roleId, permissionId) {
         console.log(roleId)

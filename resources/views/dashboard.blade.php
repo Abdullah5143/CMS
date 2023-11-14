@@ -26,13 +26,15 @@
                     <br><br>
                     <a href='{{ URL::to('employee') }}'><button type="button">Employees</button></a>
                     
-                    @if(Auth::User()->hasRole('admin'))
+                    @if(Auth::User()->hasPermissionTo('access-roles'))
                         <br><br>
                     <a href='{{ URL::to('permission') }}'><button type="button">Permissions</button></a>
+                    @endif
+                    @if(Auth::User()->hasPermissionTo('access-permissions'))
                     <br><br>
                     <a href='{{ URL::to('role') }}'><button type="button">Roles</button></a>
-                    
                     @endif
+                    
                 </div>
             </div>
         </div>

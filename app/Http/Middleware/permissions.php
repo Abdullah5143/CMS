@@ -37,6 +37,17 @@ class permissions
             'company.update' => 'update-company',
             'company.show' => 'show-company',
             'company.destroy' => 'delete-company',
+            'permission.index' => 'access-permissions',
+            'permission.show' => 'access-permissions',
+            'role.revokePermission' => 'access-roles',
+            'role.permissions' => 'access-roles',
+            'role.index' => 'access-roles',
+            'role.create' => 'access-roles',
+            'role.store' => 'access-roles',
+            'role.edit' => 'access-roles',
+            'role.update' => 'access-roles',
+            'role.show' => 'access-roles',
+            'role.destroy' => 'access-roles',
         ];
 
         if (array_key_exists($route, $permissions) && !auth()->user()->can($permissions[$route])) {
