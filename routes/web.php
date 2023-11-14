@@ -38,14 +38,18 @@ require __DIR__.'/auth.php';
 Route::middleware('auth', 'permissions')->group(function () {
     Route::resource('company', CompanyController::class);
     Route::resource('employee', EmployeeController::class);
-});
-
-Route::middleware('auth', 'accessPermissions')->group(function () {
     Route::resource('permission', PermissionController::class);
+    Route::post('role/revoke-permission', [RoleController::class, 'revokePermission'])->name('role.revokePermission');
+    Route::post('role/{role}', [RoleController::class, 'givePermission'])->name('role.permissions');
+    Route::resource('role', RoleController::class);
 });
 
-Route::middleware('auth', 'accessRoles')->group(function () {
-Route::post('role/revoke-permission', [RoleController::class, 'revokePermission'])->name('role.revokePermission');
-Route::post('role/{role}', [RoleController::class, 'givePermission'])->name('role.permissions');
-Route::resource('role', RoleController::class);
-});
+// Route::middleware('auth', 'accessPermissions')->group(function () {
+//     Route::resource('permission', PermissionController::class);
+// });
+
+// Route::middleware('auth', 'accessRoles')->group(function () {
+// Route::post('role/revoke-permission', [RoleController::class, 'revokePermission'])->name('role.revokePermission');
+// Route::post('role/{role}', [RoleController::class, 'givePermission'])->name('role.permissions');
+// Route::resource('role', RoleController::class);
+// });

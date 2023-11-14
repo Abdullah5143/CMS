@@ -84,11 +84,6 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(), [
             'fname' => 'required',
             'lname' => 'required',
-            // 'company_id' => [
-            //     'required',
-            //     'company_id',
-            //     Rule::exists('companies', 'company_id'),
-            // ],
             'company_id' => 'required|exists:companies,id',
             'email' => 'required|email|unique:employees',
             'phone' => 'required',
@@ -103,7 +98,8 @@ class EmployeeController extends Controller
             $emp->company_id=$request->input('company_id');
             $emp->email=$request->input('email');
             $emp->phone=$request->input('phone');
-            // $emp->assignRole('employee','web');
+            $role = Role::findByName('employee','web');
+            $emp->assignRole($role);
             $emp->save();
         
         return Response(['data'=>$emp],200);
